@@ -2,56 +2,53 @@
 // ==========
 // MQ-137
 // ==========
-// #define RL 10    // nilai RL = 10 pada sensor
-// #define m -0.417 // hasil perhitungan gradien
-// #define b 0.425  // hasil perhitungan perpotongan
-// #define Ro 205   // hasil pengukuran RO
 
-const int RL = 10;
-const float m = -0.417;
-const float b = 0.425;
-const int Ro = 205;
+#define RL 4.7  //The value of resistor RL is 47K
 
-int raw_mq_analogValue = 0;
+#define m -0.263 //Enter calculated Slope 
+#define b 0.42 //Enter calculated intercept
+#define Ro_final 20 //Enter found Ro value
 
-int fixADCAmmonia;
-int avgADCAmmonia[10];
-int tempADCAmmonia;
-float ammoniaVoltage;
-double ADCAmmonia;
 
-float VRL, RS, ratio;
+float analog_value_searchRO;
+float VRL_searchRO;
+float Rs_searchRO;
+float Ro_searchRO;
 
-float readings[SAMPLE_VALUE];
-int readIndex = 0;
-float total = 0;
-float average = 0;
+float VRL; //Voltage drop across the MQ sensor
+float Rs; //Sensor resistance at gas concentration 
+float ratio; //Define variable for ratio
 float value_mq_ppm = 0;
 
-void mqSensor(){
 
-    fixADCAmmonia = 0;
-    tempADCAmmonia = 0;
-    ADCAmmonia = 0;
+void searchROMQ(){
 
-    for (int i = 0; i < SAMPLE_VALUE; i++)
-    {
-        ADCAmmonia = read_by_ads_mq();
-        avgADCAmmonia[i] = ADCAmmonia;
-    }
 
-    for (int i = 0; i < SAMPLE_VALUE; i++)
-    {
-        tempADCAmmonia += avgADCAmmonia[i];
-    }
 
-    fixADCAmmonia = tempADCAmmonia / SAMPLE_VALUE;
+  for(int test_cycle = 1 ; test_cycle <= 500 ; test_cycle++) //Read the analog output of the sensor for 200 times
+  {
+    analog_value_searchRO = analog_value_searchRO + read_by_ads_mq(); //add the values for 200
+  }
+  analog_value_searchRO = analog_value_searchRO/500.0; //Take average
+  VRL_searchRO = ads.computeVolts(analog_value_searchRO); //Convert analog value to voltage
+  //RS = ((Vc/VRL)-1)*RL is the formulae we obtained from datasheet
+  Rs_searchRO = ((5.0/VRL)-1) * RL;
+  //RS/RO is 3.6 as we obtained from graph of datasheet
+  Ro_searchRO = Rs/3.6;
+  delay(1000); //delay of 1sec
 
-    ammoniaVoltage = fixADCAmmonia * (3.3f / 4095.0f); // konversi analog ke tegangan
-    RS = (3.3 / ammoniaVoltage - 1) * 10;              // rumus untuk RS
-    ratio = RS / Ro;                                   // rumus mencari ratio
-    value_mq_ppm = pow(10, ((log10(ratio) - b) / m));           // rumus mencari ppm
+}
 
+void mqSensor() {
+
+  read_by_ads_mq();
+
+  VRL = ads.computeVolts(adc3_mq); //Measure the voltage drop and convert to 0-5V
+  Rs = ((5.0*RL)/VRL)-RL; //Use formula to get Rs value
+  ratio = Rs/Ro_final;  // find ratio Rs/Ro
+
+  // value_mq_ppm = pow(10, ((log10(ratio)-b)/m)); //use formula to calculate ppm
+  value_mq_ppm = VRL; //use formula to calculate ppm
 }
 
 void mqPrintToSerialMonitor(){
@@ -60,7 +57,9 @@ void mqPrintToSerialMonitor(){
   Serial.println(adc3_mq);
   Serial.print("ADC Voltage MQ: ");
   Serial.println(ads.computeVolts(adc3_mq));
-  Serial.print("Nilai MQ: ");
+  Serial.print("RO MQ: ");
+  Serial.println(Ro_searchRO);
+  Serial.print("Nilai MQ Ammonia: ");
   Serial.println(value_mq_ppm);
 
 }

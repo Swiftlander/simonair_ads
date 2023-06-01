@@ -67,6 +67,17 @@ void mq_value_print_to_web_serial(){
   WebSerial.println();
 }
 
+void salinity_value_print_to_web_serial(){
+  WebSerial.println("============== Salinity ==============");
+  WebSerial.print("ADC Salinity: ");
+  WebSerial.println(adc1_tds);
+  WebSerial.print("Voltage salinity: ");
+  WebSerial.println(ads.computeVolts(adc1_tds));
+  WebSerial.print("Nilai salinity: ");
+  WebSerial.println(value_salinity);
+  WebSerial.println();
+}
+
 
 
 

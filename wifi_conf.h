@@ -3,12 +3,22 @@
 // ====================================================
 #include <WiFi.h>
 
-// Replace with your network credentials
-const char* ssid = "Acer";
-const char* password = "1029384756";
+// // Replace with your network credentials
+// const char* ssid = "Galaxy M33 5GD3C6";
+// const char* password = "bifo2473";
 
-IPAddress local_IP(192, 168, 137, 100);
-IPAddress gateway(192, 168, 137, 1);
+// IPAddress local_IP(192,168,61,171);
+// IPAddress gateway(192,168,61,66);
+// IPAddress subnet(255, 255, 255, 0);
+// IPAddress primaryDNS(8, 8, 8, 8);   // optional
+// IPAddress secondaryDNS(8, 8, 4, 4); // optional
+
+// Replace with your network credentials
+const char* ssid = "Canon-Pixma-E460";
+const char* password = "Ikanlele1kilo";
+
+IPAddress local_IP(172, 22, 38, 15);
+IPAddress gateway(172, 22, 38, 254);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress primaryDNS(8, 8, 8, 8);   // optional
 IPAddress secondaryDNS(8, 8, 4, 4); // optional

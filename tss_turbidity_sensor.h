@@ -12,7 +12,8 @@ double value_tss = 0;
 
 
 void tssTurbiditySensor(){
-  raw_adc_tss = read_by_ads_tss();    
+  raw_adc_tss = read_by_ads_tss();
+  value_tss =  ads.computeVolts(adc2_tss);   
 }
 
 

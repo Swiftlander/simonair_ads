@@ -14,15 +14,7 @@ int analogBufferIndex = 0,copyIndex = 0;
 float averageVoltage = 0,raw_value_tds = 0,value_tds_cal = 0, temperature = 25;
 double analogReadCal;
 
-
 int value_temperature_dummy = 25;
-
-// double ADC_READ_TDS(byte _pin_tds)
-// {
-//   int _raw_tds = adc1_tds;
-//   int _result_tds = ADC_LUT_32[_raw_tds];
-//   return _result_tds;
-// }
 
 int getMedianNum(int bArray[], int iFilterLen)
 {
@@ -72,7 +64,7 @@ void tdsSensor()
         analogBufferTemp[copyIndex] = analogBuffer[copyIndex];
       // averageVoltage = getMedianNum(analogBufferTemp, SCOUNT) * (float)VREF / 4095.0;                                                                                                   // read the analog value more stable by the median filtering algorithm, and convert to voltage value
       averageVoltage = ads.computeVolts(adc1_tds); // read the analog value more stable by the median filtering algorithm, and convert to voltage value
-      float compensationCoefficient = 1.0 + 0.02 * (value_temperature_dummy - 25.0);                                                                                                                // temperature compensation formula: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.02*(fTP-25.0));
+      float compensationCoefficient = 1.0 + 0.02 * (value_temperature - 25.0);                                                                                                                // temperature compensation formula: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.02*(fTP-25.0));
       float compensationVoltage = averageVoltage / compensationCoefficient;                                                                                                             // temperature compensation
       raw_value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 0.495; // convert voltage value to tds value
     }        

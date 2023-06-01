@@ -1,7 +1,7 @@
 #include <HTTPClient.h>  //Board = Version 2.7.4
 #include <ArduinoJson.h> //Library = arduinoJson 6.15.1
 
-const char *nama = "Aquarium_1";
+const char *nama = "Aquarium_5";
 
 byte server[] = {103, 179, 57, 67};
 WiFiClient client;
@@ -16,7 +16,7 @@ void sendData(){
     float amonia = value_mq_ppm;
     float tss = value_tss;
     float tds = raw_value_tds;
-    float salinitas = value_salinity;
+    float salinitas = averageVoltage;
     // Serial.println(suhu);
     // Serial.println(ph);
     // Serial.println(amonia);
