@@ -56,6 +56,13 @@ void tss_value_print_to_web_serial(){
   WebSerial.println();
 }
 
+void temperature_value_print_to_web_serial(){
+  WebSerial.println("============== TEMPERATURE ==============");
+  WebSerial.print("Nilai Suhu: ");
+  WebSerial.println(value_temperature);
+  WebSerial.println();
+}
+
 void mq_value_print_to_web_serial(){
   WebSerial.println("============== MQ ==============");
   WebSerial.print("ADC MQ: ");

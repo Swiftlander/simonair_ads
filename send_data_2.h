@@ -2,7 +2,7 @@
 #include <ArduinoJson.h> //Library = arduinoJson 6.15.1
 
 const char *nama = "Aquarium_5";
-const int id_alat = 5;
+const String id_alat = "5Z0SPeQnezqL";
 
 byte server[] = {103, 117, 57, 130};
 WiFiClient client;

@@ -1,13 +1,3 @@
-
-  #include <HTTPClient.h> 
-  #include <ArduinoJson.h>
-
-  #include <AsyncTCP.h>
-  #include <ESPAsyncWebServer.h>
-  #include <AsyncElegantOTA.h>
-
-  #include <WebSerial.h>
-
   // JUMLAH PENGAMBILAN SAMPEL
   #define SAMPLE_VALUE 50
 
@@ -22,7 +12,7 @@
 
   #include "OTAandSerialWeb.h"
   #include "send_data.h"
-  // #include "send_data_2.h"
+  #include "send_data_2.h"
 
   #include "wifi_conf.h"
 
@@ -84,8 +74,8 @@ void loop(){
     }
   
   if(currentTime - prevCurrentTimeSendData >= intervalSendDataTime){
-    sendData();
-    // sendData_2();
+    // sendData();
+    sendData_2();
     prevCurrentTimeSendData = currentTime;
   }     
     

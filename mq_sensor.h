@@ -3,11 +3,17 @@
 // MQ-137
 // ==========
 
-#define RL 4.7  //The value of resistor RL is 47K
+// #define RL 4.7  //The value of resistor RL is 47K
 
-#define m -0.263 //Enter calculated Slope 
-#define b 0.42 //Enter calculated intercept
-#define Ro_final 20 //Enter found Ro value
+// #define m -0.263 //Enter calculated Slope 
+// #define b 0.42 //Enter calculated intercept
+// #define Ro_final 20 //Enter found Ro value
+
+const float RL  = 4.7;  //The value of resistor RL is 47K
+
+const float m = -0.263; //Enter calculated Slope 
+const float b = 0.42; //Enter calculated intercept
+const float Ro_final = 20; //Enter found Ro value
 
 
 float analog_value_searchRO;
@@ -22,8 +28,6 @@ float value_mq_ppm = 0;
 
 
 void searchROMQ(){
-
-
 
   for(int test_cycle = 1 ; test_cycle <= 500 ; test_cycle++) //Read the analog output of the sensor for 200 times
   {

@@ -35,13 +35,3 @@ int16_t read_by_ads_mq(){
   adc3_mq = ads.readADC_SingleEnded(3);  // Untuk Sensor MQ
   return adc3_mq;
 }
-
-
-// void read_by_ads(){
-//   volts_ph = ads.computeVolts(adc0_ph);
-//   volts_tds = ads.computeVolts(adc1_tds);
-  
- 
-//   volts_tss = ads.computeVolts(adc2_tss);
-//   volts_mq = ads.computeVolts(adc3_mq);
-// }

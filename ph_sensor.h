@@ -28,7 +28,7 @@ void phSensor(){
     // PH_step = (PH4 - PH7) / 3;
     // value_ph = (7.00f + ((PH7 - voltage_ph) / PH_step)) + 0.9f;
     // value_ph = -0.1763x + 3.677;
-    value_ph = (voltage_ph - 3.677) / -0.1763;
+    value_ph = (voltage_ph - 3.636) / -0.1511;
 }
 
 void phPrintToSerialMonitor(){
