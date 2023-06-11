@@ -16,7 +16,7 @@ void sendData(){
     float amonia = value_mq_ppm;
     float tss = value_tss;
     float tds = raw_value_tds;
-    float salinitas = averageVoltage;
+    float salinitas = value_salinity;
     // Serial.println(suhu);
     // Serial.println(ph);
     // Serial.println(amonia);

@@ -3,25 +3,28 @@
 // ====================================================
 #include <WiFi.h>
 
-// Replace with your network credentials
+// ======== WIFI 1 ========
 const char* ssid = "Acer";
 const char* password = "1029384756";
 
 IPAddress local_IP(192,168,137,100);
 IPAddress gateway(192,168,137,1);
 IPAddress subnet(255, 255, 255, 0);
-IPAddress primaryDNS(8, 8, 8, 8);   // optional
-IPAddress secondaryDNS(8, 8, 4, 4); // optional
+IPAddress primaryDNS(8, 8, 8, 8);
+IPAddress secondaryDNS(8, 8, 4, 4);
+// ======== WIFI 1 ========
 
-// Replace with your network credentials
+
+// ======== WIFI 2 ========
 // const char* ssid = "Canon-Pixma-E460";
 // const char* password = "Ikanlele1kilo";
 
 // IPAddress local_IP(172, 22, 38, 15);
 // IPAddress gateway(172, 22, 38, 254);
 // IPAddress subnet(255, 255, 255, 0);
-// IPAddress primaryDNS(8, 8, 8, 8);   // optional
-// IPAddress secondaryDNS(8, 8, 4, 4); // optional
+// IPAddress primaryDNS(8, 8, 8, 8);
+// IPAddress secondaryDNS(8, 8, 4, 4);
+// ======== WIFI 2 ========
 
 void initWiFi() {
   WiFi.mode(WIFI_STA);
@@ -34,7 +37,18 @@ void initWiFi() {
   Serial.print("Connecting to WiFi ..");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print('.');
+    Serial.println("Connecting..");
+    digitalWrite(indikator, LOW);
+    delay(1000);
+    digitalWrite(indikator, HIGH);
     delay(1000);
   }
+
+  if (WiFi.status() == WL_CONNECTED)
+   {
+    Serial.println("Connected!!!");
+    digitalWrite(indikator, HIGH);
+    delay(1000);
+   }
   Serial.println(WiFi.localIP());
 }

@@ -1,6 +1,15 @@
   // JUMLAH PENGAMBILAN SAMPEL
   #define SAMPLE_VALUE 50
 
+// ====================================================
+// KONFIGURASI LED INTERNAL | START
+// ====================================================
+int indikator = LED_BUILTIN;
+// ====================================================
+// KONFIGURASI LED INTERNAL | END
+// ====================================================
+
+
   #include "ads_setup.h"
 
   #include "temperature_sensor.h"
@@ -11,31 +20,24 @@
   #include "salinity_sensor.h"
 
   #include "OTAandSerialWeb.h"
-  #include "send_data.h"
+  // #include "send_data.h"
   #include "send_data_2.h"
 
   #include "wifi_conf.h"
 
-
-// ====================================================
-// KONFIGURASI LED INTERNAL | START
-// ====================================================
-int indikator = LED_BUILTIN;
-// ====================================================
-// KONFIGURASI LED INTERNAL | END
-// ====================================================
-
 // INTERVAL PEMBACAAN
 unsigned long intervalSendTime = 30000;
 unsigned long prevCurrentTimeSend = 0;
-unsigned long intervalPrintTime = 2000;
+unsigned long intervalPrintTime = 1500;
 unsigned long prevCurrentTimePrint = 0;
 unsigned long intervalSendDataTime = 15000;
 unsigned long prevCurrentTimeSendData = 0;
 
 void setup(){
     Serial.begin(115200);
-    
+  
+    pinMode(indikator, OUTPUT); 
+  
     initWiFi();
     setup_ota_serial_web();
     setup_ads();
