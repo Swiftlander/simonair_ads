@@ -1,9 +1,17 @@
 #include <HTTPClient.h>  //Board = Version 2.7.4
 #include <ArduinoJson.h> //Library = arduinoJson 6.15.1
 
-const char *nama = "Aquarium_5";
+// Akuarium 1 = mY6cSeR2Cj0L
+// AKuarium 2 = nxSmsSXTyf36
+// Akuarium 3 = zrKht1cq5fPL
+// Akuarium 4 = dripROD0IdEl
+// Akuarium 5 = kn85wb47rdmD
+// Akuarium 6 = mljxTvTevUAr
 
-byte server[] = {103, 179, 57, 67};
+String nama_alat = "Akuarium 3";
+const String id_alat = "zrKht1cq5fPL";
+
+byte server[] = {103, 117, 57, 130};
 WiFiClient client;
 const int httpPort = 80;
 String url;
@@ -11,11 +19,11 @@ unsigned long timeout;
 
 void sendData(){
 
-    float suhu = value_ph;
-    float ph = value_temperature;
+    float suhu = value_temperature;
+    float ph = value_ph;
     float amonia = value_mq_ppm;
     float tss = value_tss;
-    float tds = raw_value_tds;
+    float tds = value_tds;
     float salinitas = value_salinity;
     // Serial.println(suhu);
     // Serial.println(ph);
@@ -23,59 +31,30 @@ void sendData(){
     // Serial.println(tss);
     // Serial.println(tds);
     // Serial.println(salinitas);
+ String url = "http://103.117.57.130/api/monitoring/" +
+               String(id_alat) + "/" +
+               nama_alat + "/" +
+               String(ph) + "/" +
+               String(suhu) + "/" +
+               String(amonia) + "/" +
+               String(tss) + "/" +
+               String(tds) + "/" +
+               String(salinitas);
 
-    Serial.print("connecting to ");
-    // Serial.println(server);
+  // Mengirim HTTP GET request ke server
+  HTTPClient http;
+  http.begin(url);
 
-    if (!client.connect(server, httpPort))
-    {
-        Serial.println("connection failed");
-        return;
-    }
+  int httpResponseCode = http.GET();
+  if (httpResponseCode == HTTP_CODE_OK) {
+    String response = http.getString();
+    Serial.println("Data berhasil dikirim");
+    Serial.println("Response: " + response);
+  } else {
+    Serial.print("HTTP Error code: ");
+    Serial.println(httpResponseCode);
+  }
 
-    // We now create a URI for the request
-    url = "/monitoring/getValue/";
-    url += nama;
-    url += "/";
-    url += suhu;
-    url += "/";
-    url += ph;
-    url += "/";
-    url += amonia;
-    url += "/";
-    url += tss;
-    url += "/";
-    url += tds;
-    url += "/";
-    url += salinitas;
-
-    Serial.print("Requesting URL: ");
-    Serial.println(url);
-
-    // This will send the request to the server
-    client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-                 "Host: ikan.portalsvipb.com\r\n" +
-                 "Connection: close\r\n\r\n");
-    timeout = millis();
-    while (client.available() == 0)
-    {
-        if (millis() - timeout > 5000)
-        {
-            Serial.println(">>> Client Timeout !");
-            client.stop();
-            return;
-        }
-    }
-
-    // Read all the lines of the reply from server and print them to Serial
-    while (client.available())
-    {
-        String line = client.readStringUntil('\r');
-        Serial.print(line);
-    }
-
-    Serial.println();
-    Serial.println("closing connection");
-    Serial.println();
+  http.end();
 
 }

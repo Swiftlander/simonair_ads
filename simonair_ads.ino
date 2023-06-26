@@ -20,8 +20,7 @@ int indikator = LED_BUILTIN;
   #include "salinity_sensor.h"
 
   #include "OTAandSerialWeb.h"
-  // #include "send_data.h"
-  #include "send_data_2.h"
+  #include "send_data.h"
 
   #include "wifi_conf.h"
 
@@ -30,22 +29,24 @@ unsigned long intervalSendTime = 30000;
 unsigned long prevCurrentTimeSend = 0;
 unsigned long intervalPrintTime = 1500;
 unsigned long prevCurrentTimePrint = 0;
-unsigned long intervalSendDataTime = 15000;
+unsigned long intervalSendDataTime = 10000;
 unsigned long prevCurrentTimeSendData = 0;
 
 void setup(){
     Serial.begin(115200);
   
-    pinMode(indikator, OUTPUT); 
-  
-    initWiFi();
-    setup_ota_serial_web();
     setup_ads();
+    pinMode(indikator, OUTPUT); 
 }
 
 void loop(){
-    
+  
   unsigned long currentTime = millis();
+
+  if (WiFi.status() != WL_CONNECTED){
+      initWiFi();
+      setup_ota_serial_web();
+  }
 
   temperatureSensorFunction();
   phSensor();
@@ -53,8 +54,9 @@ void loop(){
   tssTurbiditySensor();
   salinitySensor();
   
-  searchROMQ();
-  mqSensor();
+  readMQ();
+  // searchROMQ();
+  // mqSensor();
     
 
     if(currentTime - prevCurrentTimePrint >= intervalPrintTime){
@@ -76,8 +78,9 @@ void loop(){
     }
   
   if(currentTime - prevCurrentTimeSendData >= intervalSendDataTime){
-    // sendData();
-    sendData_2();
+    if (WiFi.status() == WL_CONNECTED){
+      sendData();
+    }
     prevCurrentTimeSendData = currentTime;
   }     
     

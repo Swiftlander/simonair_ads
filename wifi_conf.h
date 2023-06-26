@@ -34,10 +34,11 @@ void initWiFi() {
     Serial.println("STA Failed to configure");
   }
   
-  Serial.print("Connecting to WiFi ..");
-  while (WiFi.status() != WL_CONNECTED) {
+  Serial.println("Connecting to WiFi ..");
+
+  if (WiFi.status() != WL_CONNECTED) {
     Serial.print('.');
-    Serial.println("Connecting..");
+    Serial.println("\nConnecting..");
     digitalWrite(indikator, LOW);
     delay(1000);
     digitalWrite(indikator, HIGH);
@@ -48,7 +49,36 @@ void initWiFi() {
    {
     Serial.println("Connected!!!");
     digitalWrite(indikator, HIGH);
+    Serial.println(WiFi.localIP());
     delay(1000);
    }
-  Serial.println(WiFi.localIP());
 }
+
+
+// void initWiFi() {
+//   WiFi.mode(WIFI_STA);
+//   WiFi.begin(ssid, password);
+  
+//   if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
+//     Serial.println("STA Failed to configure");
+//   }
+  
+//   Serial.print("Connecting to WiFi ..");
+  
+//   if (WiFi.status() != WL_CONNECTED) {
+//     Serial.print('.');
+//     Serial.println("Connecting..");
+//     digitalWrite(indikator, LOW);
+//     delay(1000);
+//     digitalWrite(indikator, HIGH);
+//     delay(1000);
+//   }
+
+//   if (WiFi.status() == WL_CONNECTED)
+//    {
+//     Serial.println("Connected!!!");
+//     digitalWrite(indikator, HIGH);
+//     delay(1000);
+//    }
+//   Serial.println(WiFi.localIP());
+// }
