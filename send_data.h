@@ -8,8 +8,8 @@
 // Akuarium 5 = kn85wb47rdmD
 // Akuarium 6 = mljxTvTevUAr
 
-String nama_alat = "Akuarium 3";
-const String id_alat = "zrKht1cq5fPL";
+String nama_alat = "Akuarium 2";
+const String id_alat = "nxSmsSXTyf36";
 
 byte server[] = {103, 117, 57, 130};
 WiFiClient client;
