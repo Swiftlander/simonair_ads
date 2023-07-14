@@ -1,0 +1,24 @@
+==============================
+13 Juli 2023
+==============================
+Akuarium 1 = Sensor ph tidak terbaca. Perlu dirapihin kabel di bagian dalam nya.
+
+Akuarium 3 = Semua sensor terbaca, sensor ph sudah dikalibrasi, tinggal sensor tds yang belum.
+
+Akuarium 4 = Semua sensor terbaca, sensor ph sudah dikalibrasi, tinggal sensor tds yang belum.
+
+Akuarium 5 = Semua sensor terbaca, sensor ph sudah dikalibrasi, tinggal sensor tds yang belum.
+
+Akuarium 7 = Semua sensor terbaca, sensor ph sudah dikalibrasi, tinggal sensor tds yang belum.
+
+Akuarium 8 = Semua sensor terbaca, sensor ph sudah dikalibrasi, tinggal sensor tds yang belum.
+
+Akuarium 9 = Semua sensor terbaca, sensor ph sudah dikalibrasi, tinggal sensor tds yang belum.
+
+Akuarium 10 = Pembacaan ADS error.
+
+Akuarium 11 = Sensor pH dan sensor kekeruhan error.
+
+
+
+
