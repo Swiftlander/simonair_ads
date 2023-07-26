@@ -70,6 +70,7 @@ void loop(){
 
       ph_value_print_to_web_serial();
       tds_value_print_to_web_serial();
+      temperature_value_print_to_web_serial();
       salinity_value_print_to_web_serial();
       tss_value_print_to_web_serial();
       mq_value_print_to_web_serial();

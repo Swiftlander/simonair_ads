@@ -28,8 +28,8 @@ void ph_value_print_to_web_serial(){
   // WebSerial.println(raw_adc_ph);
   WebSerial.print("Voltage PH: ");
   WebSerial.println(voltage_ph);
-  // WebSerial.print("Nilai PH: ");
-  // WebSerial.println(value_ph);
+  WebSerial.print("Nilai PH: ");
+  WebSerial.println(value_ph);
   WebSerial.println();
 }
 
@@ -39,9 +39,9 @@ void tds_value_print_to_web_serial(){
   // WebSerial.println(raw_adc_tds);
   WebSerial.print("Voltage TDS: ");
   WebSerial.println(voltage_tds);
-  // WebSerial.print("TDS Value: ");
-  // WebSerial.print(value_tds);
-  // WebSerial.println("ppm");
+  WebSerial.print("TDS Value: ");
+  WebSerial.print(value_tds);
+  WebSerial.println("ppm");
   WebSerial.println();
 }
 
@@ -51,8 +51,8 @@ void tss_value_print_to_web_serial(){
   // WebSerial.println(raw_adc_tss);
   WebSerial.print("Voltage TSS/TURBIDITY: ");
   WebSerial.println(voltage_tss);
-  // WebSerial.print("Nilai TURBIDITY: ");
-  // WebSerial.println(value_tss);
+  WebSerial.print("Nilai TURBIDITY: ");
+  WebSerial.println(value_tss);
   WebSerial.println();
 }
 
@@ -69,8 +69,8 @@ void mq_value_print_to_web_serial(){
   // WebSerial.println(raw_adc_mq);
   WebSerial.print("Voltage MQ: ");
   WebSerial.println(voltage_mq);
-  // WebSerial.print("Nilai MQ: ");
-  // WebSerial.println(value_mq_ppm);
+  WebSerial.print("Nilai MQ: ");
+  WebSerial.println(value_mq_ppm);
   WebSerial.println();
 }
 
@@ -80,8 +80,8 @@ void salinity_value_print_to_web_serial(){
   // WebSerial.println(raw_adc_salinity);
   WebSerial.print("Voltage salinity: ");
   WebSerial.println(voltage_salinity);
-  // WebSerial.print("Nilai salinity: ");
-  // WebSerial.println(value_salinity);
+  WebSerial.print("Nilai salinity: ");
+  WebSerial.println(value_salinity);
   WebSerial.println();
 }
 

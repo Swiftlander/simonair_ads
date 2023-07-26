@@ -16,11 +16,13 @@ float raw_adc_ph, voltage_ph, value_ph;
 // Akuarium 5 = (voltage_ph - 3.7904) / -0.1769;
 // Akuarium 6 = (voltage_ph - 3.7956) / -0.1746;
 
+// Akuarium 2 = (voltage_ph - 7.7) / -0.0131;
+
 
 void phSensor(){
     raw_adc_ph = read_by_ads_ph();
     voltage_ph = ads.computeVolts(raw_adc_ph);
-    value_ph = (voltage_ph - 3.7904) / -0.1769;
+    value_ph = (voltage_ph - 7.7) / -0.0131;
 }
 
 void phPrintToSerialMonitor(){

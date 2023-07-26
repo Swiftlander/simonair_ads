@@ -31,7 +31,7 @@ void sendData(){
     // Serial.println(tss);
     // Serial.println(tds);
     // Serial.println(salinitas);
- String url = "http://103.117.57.130/api/monitoring/" +
+ String url = "http://simonair.portalsvipb.com/api/monitoring/" +
                String(id_alat) + "/" +
                nama_alat + "/" +
                String(ph) + "/" +

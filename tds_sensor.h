@@ -20,8 +20,8 @@ void tdsSensor()
   voltage_tds = ads.computeVolts(raw_adc_tds);
   float compensationCoefficient = 1.0 + 0.02 * (value_temperature - 25.0);
   float compensationVoltage = voltage_tds / compensationCoefficient;
-  value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 0.63;
-       
+  value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 1;
+  value_tds = (0.79 * value_tds) + -34.5;
 }
 
 void tdsPrintToSerialMonitor(){
