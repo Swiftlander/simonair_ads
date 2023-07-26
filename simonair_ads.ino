@@ -25,9 +25,9 @@ int indikator = LED_BUILTIN;
   #include "wifi_conf.h"
 
 // INTERVAL PEMBACAAN
-unsigned long intervalSendTime = 30000;
+unsigned long intervalSendTime = 15000;
 unsigned long prevCurrentTimeSend = 0;
-unsigned long intervalPrintTime = 1500;
+unsigned long intervalPrintTime = 5000;
 unsigned long prevCurrentTimePrint = 0;
 unsigned long intervalSendDataTime = 10000;
 unsigned long prevCurrentTimeSendData = 0;

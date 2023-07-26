@@ -57,4 +57,40 @@ void sendData(){
 
   http.end();
 
-}
+} 
+
+void sendDataVoltage(){
+
+    float volt_ph = voltage_ph;
+    float volt_tds = voltage_tds;
+    float volt_tss = voltage_tss;
+    float volt_amonia = voltage_mq;
+    // Serial.println(ph);
+    // Serial.println(tds);
+    // Serial.println(tss);
+    // Serial.println(amonia);
+ String url_voltage = "http://simonair.portalsvipb.com/api/monitoring/" +
+               String(id_alat) + "/" +
+               nama_alat + "/" +
+               String(volt_ph) + "/" +
+               String(volt_tds) + "/" +
+               String(volt_tss) + "/" +
+               String(volt_amonia);
+
+  // Mengirim HTTP GET request ke server
+  HTTPClient http_voltage;
+  http_voltage.begin(url_voltage);
+
+  int httpResponseCode = http_voltage.GET();
+  if (httpResponseCode == HTTP_CODE_OK) {
+    String response = http_voltage.getString();
+    Serial.println("Data berhasil dikirim");
+    Serial.println("Response: " + response);
+  } else {
+    Serial.print("HTTP Error code: ");
+    Serial.println(httpResponseCode);
+  }
+
+  http_voltage.end();
+
+} 

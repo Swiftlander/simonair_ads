@@ -1,6 +1,14 @@
 // ==========
 // SENSOR TDS
 // ==========
+
+// Default = 0.60
+
+// Akuarium 1 = 0.47
+// Akuarium 3 = 0.65
+// Akuarium 4 = 0.63
+// Akuarium 6 = 
+
 byte pin_tds = 32; // Pin analog TDS
 
 float raw_adc_tds, voltage_tds = 0, value_tds = 0;
@@ -12,7 +20,7 @@ void tdsSensor()
   voltage_tds = ads.computeVolts(raw_adc_tds);
   float compensationCoefficient = 1.0 + 0.02 * (value_temperature - 25.0);
   float compensationVoltage = voltage_tds / compensationCoefficient;
-  value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 0.60;
+  value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 0.63;
        
 }
 

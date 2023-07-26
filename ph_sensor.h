@@ -9,20 +9,18 @@ float raw_adc_ph, voltage_ph, value_ph;
 // float PH4 = 2.96f;
 // float PH7 = 2.6f;
 
-// Akuarium 1 = (voltage_ph - 3,2178) / -0,1167;
-// Akuarium 2 = (voltage_ph - 3.8276) / -0.1599;
-// Akuarium 4 = (voltage_ph - 3,8378) / -0,1744;
-// Akuarium 5 = (voltage_ph - 3.7572) / -0.1708;
-// Akuarium 6 = (voltage_ph + 0.491) / 0.4491;
-
-// y = -0,1684x + 4,8554
-
+// Akuarium 1 = (voltage_ph - 3.2178) / -0.1667;
+// Akuarium 2 = (voltage_ph - 3.6782) / -0.1587;
+// Akuarium 3 = (voltage_ph - 3.672) / -0.1605;
+// Akuarium 4 = (voltage_ph - 3.8378) / -0.1801;
+// Akuarium 5 = (voltage_ph - 3.7904) / -0.1769;
+// Akuarium 6 = (voltage_ph - 3.7956) / -0.1746;
 
 
 void phSensor(){
     raw_adc_ph = read_by_ads_ph();
     voltage_ph = ads.computeVolts(raw_adc_ph);
-    value_ph = (voltage_ph - 4,8554) / -0,1684;
+    value_ph = (voltage_ph - 3.7904) / -0.1769;
 }
 
 void phPrintToSerialMonitor(){
