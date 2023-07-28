@@ -8,10 +8,10 @@ Adafruit_ADS1115 ads;
 int16_t adc0_ph, adc1_tds, adc2_tss, adc3_mq;
 float volts_ph, volts_tds, volts_tss, volts_mq;
 
-RunningMedian median_ph = RunningMedian(5);
-RunningMedian median_tds = RunningMedian(5);
-RunningMedian median_tss = RunningMedian(5);
-RunningMedian median_mq = RunningMedian(5);
+RunningMedian median_ph = RunningMedian(7);
+RunningMedian median_tds = RunningMedian(7);
+RunningMedian median_tss = RunningMedian(7);
+RunningMedian median_mq = RunningMedian(7);
 
 void setup_ads(){
   Wire.begin();
