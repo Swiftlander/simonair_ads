@@ -15,7 +15,7 @@ RunningMedian median_mq = RunningMedian(7);
 
 void setup_ads(){
   Wire.begin();
-
+  delay(1000);
   if (!ads.begin()){
     Serial.println("Failed to initialize ADS.");
   }

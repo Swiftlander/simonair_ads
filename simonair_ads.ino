@@ -45,6 +45,7 @@ void loop(){
 
   if (WiFi.status() != WL_CONNECTED){
       initWiFi();
+      delay(3000);
       setup_ota_serial_web();
   }
 
