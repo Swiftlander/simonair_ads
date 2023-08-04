@@ -19,14 +19,47 @@
 const char* ssid = "Canon-Pixma-E460";
 const char* password = "Ikanlele1kilo";
 
-IPAddress local_IP(172, 22, 38, 15);
+String ip_address;
+IPAddress local_IP;
 IPAddress gateway(172, 22, 38, 254);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress primaryDNS(8, 8, 8, 8);
 IPAddress secondaryDNS(8, 8, 4, 4);
 // ======== WIFI 2 ========
 
+
 void initWiFi() {
+
+  if(nomor_akuarium == 1){
+    ip_address = "172.22.38.11";
+    local_IP.fromString(ip_address.c_str());
+  }
+
+  if(nomor_akuarium == 2){
+    ip_address = "172.22.38.12";
+    local_IP.fromString(ip_address.c_str());
+  }
+
+  if(nomor_akuarium == 3){
+    ip_address = "172.22.38.13";
+    local_IP.fromString(ip_address.c_str());
+  }
+  
+  if(nomor_akuarium == 4){
+    ip_address = "172.22.38.14";
+    local_IP.fromString(ip_address.c_str());
+  }
+  
+  if(nomor_akuarium == 5){
+    ip_address = "172.22.38.15";
+    local_IP.fromString(ip_address.c_str());
+  }
+
+  if(nomor_akuarium == 6){
+    ip_address = "172.22.38.16";
+    local_IP.fromString(ip_address.c_str());
+  }
+
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   

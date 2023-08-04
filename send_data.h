@@ -8,8 +8,8 @@
 // Akuarium 5 = kn85wb47rdmD
 // Akuarium 6 = mljxTvTevUAr
 
-String nama_alat = "Akuarium 5";
-const String id_alat = "kn85wb47rdmD";
+String nama_alat;
+String id_alat;
 
 byte server[] = {103, 117, 57, 130};
 WiFiClient client;
@@ -18,19 +18,50 @@ String url;
 unsigned long timeout;
 
 void sendData(){
+  
+  if(nomor_akuarium == 1){
+  nama_alat = "Akuarium 1";
+  id_alat = "mY6cSeR2Cj0L";
+  }
 
-    float suhu = value_temperature;
-    float ph = value_ph;
-    float amonia = value_mq_ppm;
-    float tss = value_tss;
-    float tds = value_tds;
-    float salinitas = value_salinity;
-    // Serial.println(suhu);
-    // Serial.println(ph);
-    // Serial.println(amonia);
-    // Serial.println(tss);
-    // Serial.println(tds);
-    // Serial.println(salinitas);
+  if(nomor_akuarium == 2){
+    nama_alat = "Akuarium 2";
+    id_alat = "nxSmsSXTyf36";
+  }
+
+  if(nomor_akuarium == 3){
+    nama_alat = "Akuarium 3";
+    id_alat = "zrKht1cq5fPL";
+  }
+
+  if(nomor_akuarium == 4){
+    nama_alat = "Akuarium 4";
+    id_alat = "dripROD0IdEl";
+  }
+
+  if(nomor_akuarium == 5){
+    nama_alat = "Akuarium 5";
+    id_alat = "kn85wb47rdmD";
+  }
+
+  if(nomor_akuarium == 6){
+    nama_alat = "Akuarium 6";
+    id_alat = "mljxTvTevUAr";
+  }
+
+  float suhu = value_temperature;
+  float ph = value_ph;
+  float amonia = value_mq_ppm;
+  float tss = value_tss;
+  float tds = value_tds;
+  float salinitas = value_salinity;
+  // Serial.println(suhu);
+  // Serial.println(ph);
+  // Serial.println(amonia);
+  // Serial.println(tss);
+  // Serial.println(tds);
+  // Serial.println(salinitas);
+  
  String url = "http://simonair.portalsvipb.com/api/monitoring/" +
                String(id_alat) + "/" +
                nama_alat + "/" +

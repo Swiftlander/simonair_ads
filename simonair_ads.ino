@@ -1,6 +1,9 @@
   // JUMLAH PENGAMBILAN SAMPEL
   #define SAMPLE_VALUE 50
 
+  // Hanya support akuarium 1 sampai 6
+  const int nomor_akuarium = 1;
+
 // ====================================================
 // KONFIGURASI LED INTERNAL | START
 // ====================================================
