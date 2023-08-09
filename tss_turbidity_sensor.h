@@ -7,6 +7,7 @@ float voltage_tss;
 float value_tss = 0;
 
 // Akuarium 1 = (-28.5 * voltage_tss) + 128;
+// Akuarium 2 = (-47.8 * voltage_tss) + 175;
 // Akuarium 3 = (4 * voltage_tss) + -6.1;
 // Akuarium 5 = (-1.67 * voltage_tss) + 6.4;
 // Akuarium 6 = (0.952 * voltage_tss) + 0.437;
@@ -21,7 +22,7 @@ void tssTurbiditySensor(){
   // }
 
   // if(nomor_akuarium == 2){
-  //   value_tss = (-28.5 * voltage_tss) + 128;
+  //   value_tss = (-47.8 * voltage_tss) + 175;
   // }
 
   // if(nomor_akuarium == 3){
@@ -36,9 +37,9 @@ void tssTurbiditySensor(){
   //   value_tss = (-1.67 * voltage_tss) + 6.4;
   // }
 
-  if(nomor_akuarium == 6){
-    value_tss = (0.952 * voltage_tss) + 0.437;
-  }
+  // if(nomor_akuarium == 6){
+  //   value_tss = (0.952 * voltage_tss) + 0.437;
+  // }
 
 }
 

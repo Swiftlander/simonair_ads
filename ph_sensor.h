@@ -14,6 +14,7 @@ float raw_adc_ph, voltage_ph, value_ph;
 
 // Regresi Linear
 // Akuarium 1 = -0.0753 * value_ph + 8.52
+// Akuarium 1 = 
 // Akuarium 4 = 0.752 * value_ph + 2.69
 // Akuarium 5 = 
 
@@ -28,7 +29,7 @@ void phSensor(){
 
     if(nomor_akuarium == 2){
       value_ph = (voltage_ph - 3.6782) / -0.1519;
-      // value_ph = -0.0753 * value_ph + 8.52;
+      value_ph = -0.0407 * value_ph + 7.96;
     }
 
     if(nomor_akuarium == 3){
@@ -43,7 +44,7 @@ void phSensor(){
 
     if(nomor_akuarium == 5){
       value_ph = (voltage_ph - 3.7904) / -0.1769;
-      // value_ph = 0.752 * value_ph + 2.69;
+      value_ph = 0.264 * value_ph + 5.25;
     }
 
     if(nomor_akuarium == 6){
