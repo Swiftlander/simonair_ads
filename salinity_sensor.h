@@ -10,7 +10,7 @@ float value_salinity = 0;
 void salinitySensor(){
   raw_adc_salinity = read_by_ads_tds();
   voltage_salinity = ads.computeVolts(raw_adc_salinity);
-  value_salinity = voltage_salinity;
+  value_salinity = 2.56*voltage_salinity+ (-1.1);
 }
 
 void salinityPrintToSerialMonitor(){

@@ -29,28 +29,48 @@ void tdsSensor()
   value_tds = (133.42 * compensationVoltage * compensationVoltage * compensationVoltage - 255.86 * compensationVoltage * compensationVoltage + 857.39 * compensationVoltage) * 1;
   
   if(nomor_akuarium == 1){
-    value_tds = (0.438 * value_tds) + 2.87;
+    value_tds = (0.372 * value_tds) + 48.8;
   }
   
   if(nomor_akuarium == 2){
-    value_tds = (0.79 * value_tds) + -34.5;
+    value_tds = (0.712 * value_tds) + -9.26;
   }
 
   if(nomor_akuarium == 3){
-    value_tds = (0.542 * value_tds) + -16.1;
+    value_tds = (0.356 * value_tds) + 62;
   }
 
   if(nomor_akuarium == 4){
-    value_tds = (0.453 * value_tds) + 1.9;
+    value_tds = (0.389 * value_tds) + 45.1;
   }
-  
+
   if(nomor_akuarium == 5){
-    value_tds = (0.572 * value_tds) + -30.8;
+    value_tds = (0.522 * value_tds) + 8.3;
   }
 
   if(nomor_akuarium == 6){
-    value_tds = (0.444 * value_tds) + -7.04;
+    value_tds = (0.445 * value_tds) + -7.49;
   }
+
+  // if(nomor_akuarium == 2){
+  //   value_tds = (0.79 * value_tds) + -34.5;
+  // }
+
+  // if(nomor_akuarium == 3){
+  //   value_tds = (0.542 * value_tds) + -16.1;
+  // }
+
+  // if(nomor_akuarium == 4){
+  //   value_tds = (0.453 * value_tds) + 1.9;
+  // }
+  
+  // if(nomor_akuarium == 5){
+  //   value_tds = (0.572 * value_tds) + -30.8;
+  // }
+
+  // if(nomor_akuarium == 6){
+  //   value_tds = (0.444 * value_tds) + -7.04;
+  // }
   
 }
 

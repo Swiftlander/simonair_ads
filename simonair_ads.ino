@@ -2,12 +2,13 @@
   #define SAMPLE_VALUE 50
 
   // Hanya support akuarium 1 sampai 6
-  const int nomor_akuarium = 2;
+  const int nomor_akuarium = 6;
 
 // ====================================================
 // KONFIGURASI LED INTERNAL | START
 // ====================================================
 int indikator = LED_BUILTIN;
+// int indikator = 2;
 // ====================================================
 // KONFIGURASI LED INTERNAL | END
 // ====================================================
@@ -32,7 +33,7 @@ unsigned long intervalSendTime = 15000;
 unsigned long prevCurrentTimeSend = 0;
 unsigned long intervalPrintTime = 5000;
 unsigned long prevCurrentTimePrint = 0;
-unsigned long intervalSendDataTime = 15000;
+unsigned long intervalSendDataTime = 20000;
 unsigned long prevCurrentTimeSendData = 0;
 
 void setup(){
@@ -85,6 +86,7 @@ void loop(){
   if(currentTime - prevCurrentTimeSendData >= intervalSendDataTime){
     if (WiFi.status() == WL_CONNECTED){
       sendData();
+      sendDataVoltage();
     }
     prevCurrentTimeSendData = currentTime;
   }     
